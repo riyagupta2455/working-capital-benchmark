@@ -2,8 +2,8 @@
 
 > [!IMPORTANT]
 > **Key insights**
-> - **$684m cash opportunity at Kraft Heinz:** matching peer-median working capital frees ~$684m (mostly by collecting from customers faster), worth ~19% of a year's free cash flow.
-> - **Every day of cycle is worth real cash:** at Kraft Heinz, one day of receivables is worth ~$68m and one day of inventory or payables ~$46m. The case for fixing working capital is cash, not ROIC (the release barely moves ROIC).
+> - **$684m cash opportunity at Kraft Heinz:** matching peer-median working capital frees ~$684m, mostly by collecting from customers faster (each day of receivables is worth ~$68m). That's ~19% of a year's free cash flow.
+> - **The sector's "negative" cash cycles are largely bank-funded:** strip out supplier finance disclosed under ASU 2022-04 and every company's cycle turns positive. 14 of the peer median's 85 payables days is financing, and Keurig Dr Pepper goes from −36 to +39 days.
 > - **Year-end hides the peak:** Hershey ties up ~52 days of cash in Q2 vs ~35 at year-end, so annual balance sheets understate how much funding the business really needs.
 
 **How much cash is stuck in the cash conversion cycle, and how much could a laggard free up by matching its peers?**
@@ -90,6 +90,19 @@ The notebook links the cash cycle to **FCF conversion** (free cash flow ÷ net i
 
 ![Mechanical check: change in CCC vs FCF conversion](images/ccc_vs_fcf_within.png)
 
+## Supplier finance: how much of "good" payables is really financing?
+
+Supplier finance (reverse factoring) lets a company stretch payables while a bank pays its suppliers early, so part of a long DPO is really short-term borrowing. Since 2023, **ASU 2022-04** requires US companies to disclose the amount outstanding. The notebook strips it out to get **DPO and CCC ex supplier finance**.
+
+- **The benchmark is inflated:** peer-median DPO is ~85 days as reported but ~71 days ex supplier finance, so 14 days of "best practice" payables is bank financing.
+- **Negative cycles disappear:** Mondelez ($3.6bn of supplier finance, 35% of payables), Keurig Dr Pepper ($1.4bn, 46%) and General Mills ($1.4bn, 38%) all run negative cash cycles as reported, and positive ones once the financing is removed. Keurig Dr Pepper drops five places in the ranking.
+- **Kraft Heinz:** has its own $755m programme (17.5% of payables, ~4% of net debt). On a like-for-like basis it still has no payables gap to peers, so the opportunity remains receivables and inventory, not "pay suppliers later".
+- **The data itself is patchy:** Kraft Heinz discloses its programme only in 10-K text, not in the machine-readable XBRL data, and Conagra tags it only in quarterly filings. Untagged companies are treated as *unknown*, not zero, and hand-collected amounts are added with their source.
+
+**So what for a CFO:** before telling a company to "stretch payables to the peer median", check how much of that median is bank-funded, because copying it means adding debt-like financing, not improving operations.
+
+![Payables days and cash cycle with and without supplier finance](images/supplier_finance.png)
+
 ## How it works
 
 1. **Data:** SEC EDGAR XBRL `companyfacts` API (free, primary-source 10-K data). Tickers are mapped to CIKs automatically.
@@ -106,12 +119,13 @@ The notebook links the cash cycle to **FCF conversion** (free cash flow ÷ net i
 8. **Opportunity sizing and sensitivity:** day gaps converted to dollars, lever by lever, plus cash freed per day of improvement.
 9. **Seasonality:** Q1–Q3 from 10-Qs, Q4 balances from the 10-K and Q4 flows as full year minus Q1–Q3, labelled by fiscal quarter.
 10. **Cash flow and returns:** FCF = operating cash flow − capex; ROIC = operating income before impairments × (1 − effective tax rate) ÷ average (equity + debt − cash).
-11. **Export:** everything goes to `working_capital_benchmark.xlsx`.
+11. **Supplier finance:** confirmed supplier-finance balances (ASU 2022-04 XBRL tag, company-specific tags as fallback, hand-collected amounts from 10-K text where untagged) are removed from payables to get DPO and CCC ex-SCF.
+12. **Export:** everything goes to `working_capital_benchmark.xlsx`.
 
 ## Limitations
 
 - **Tags aren't always comparable:** some receivables lines include non-trade items.
-- **Supply-chain finance** (reverse factoring) inflates DPO (Keurig Dr Pepper is an extreme case) and is only partly disclosed.
+- **Supplier finance coverage starts in FY2023** and assumes the balance sits inside accounts payable; programmes below a company's materiality threshold, and untagged ones not collected by hand, are missed.
 - **Receivables factoring or securitisation** lowers DSO without any change in customer behaviour.
 - **Industries differ structurally:** only compare within a peer group. For software, DPO is measured against a small cost base and is noisy, so focus on DSO there.
 - **M&A distorts averages:** deals like KDP's merger and KHC's divestitures cause step changes.
