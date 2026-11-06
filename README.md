@@ -71,6 +71,18 @@ Year-end balance sheets show the quietest day of the year. Quarterly 10-Q data s
 
 ![Kraft Heinz quarterly working-capital days](images/target_quarterly.png)
 
+## Does working capital show up in cash flow and returns?
+
+The notebook links the cash cycle to **FCF conversion** (free cash flow ÷ net income) and **ROIC** (NOPAT ÷ average invested capital). Goodwill and intangible impairments are added back, so one-off write-downs (Kraft Heinz, Conagra, Smucker's, General Mills) don't swamp the comparison.
+
+- **Within each company, a longer cycle costs cash:** in years when a company's CCC rises 10 days above its usual level, its FCF conversion is about **15 percentage points lower**. This is the clearest result in the analysis.
+- **Across peers there's no clear link** (Spearman r between −0.1 and 0.2 for FCF conversion, FCF margin and ROIC). Brand strength, margins and capital structure matter far more than working capital for where a company sits in the league table.
+- **For Kraft Heinz,** releasing the ~$684m would lift ROIC only slightly (about 6.9% → 7.0%, because invested capital is ~$60bn, mostly goodwill), but it is a one-off cash inflow worth about **19% of a year's free cash flow**. The case for fixing working capital is cash, not returns.
+
+![CCC vs FCF conversion, FCF margin and ROIC](images/ccc_vs_returns.png)
+
+![Within-company: change in CCC vs FCF conversion](images/ccc_vs_fcf_within.png)
+
 ## How it works
 
 1. **Data:** SEC EDGAR XBRL `companyfacts` API (free, primary-source 10-K data). Tickers are mapped to CIKs automatically.
@@ -86,7 +98,8 @@ Year-end balance sheets show the quietest day of the year. Quarterly 10-Q data s
 7. **Benchmarking:** peer median and top quartile, a heatmap over time, and target vs peer interquartile range.
 8. **Opportunity sizing and sensitivity:** day gaps converted to dollars, lever by lever, plus cash freed per day of improvement.
 9. **Seasonality:** Q1–Q3 from 10-Qs, Q4 balances from the 10-K and Q4 flows as full year minus Q1–Q3, labelled by fiscal quarter.
-10. **Export:** everything goes to `working_capital_benchmark.xlsx`.
+10. **Cash flow and returns:** FCF = operating cash flow − capex; ROIC = operating income before impairments × (1 − effective tax rate) ÷ average (equity + debt − cash).
+11. **Export:** everything goes to `working_capital_benchmark.xlsx`.
 
 ## Limitations
 
@@ -96,6 +109,7 @@ Year-end balance sheets show the quietest day of the year. Quarterly 10-Q data s
 - **Industries differ structurally:** only compare within a peer group. For software, DPO is measured against a small cost base and is noisy, so focus on DSO there.
 - **M&A distorts averages:** deals like KDP's merger and KHC's divestitures cause step changes.
 - **Quarterly data is rougher:** Q4 flows are derived and quarter-end (not average) balances are used.
+- **ROIC is simplified:** invested capital isn't adjusted for leases, goodwill or pensions, and correlations across ~10 companies are suggestive, not proof.
 - **Benchmarking isn't target-setting:** channel mix and geography can justify a different cycle.
 - **US filers only:** companies that don't file 10-Ks with the SEC (e.g. most Indian or European listings) aren't covered.
 
