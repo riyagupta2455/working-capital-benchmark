@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > **Key insights**
 > - **$684m cash opportunity at Kraft Heinz:** matching peer-median working capital frees ~$684m (mostly by collecting from customers faster), worth ~19% of a year's free cash flow.
-> - **A longer cycle costs cash:** within companies, every +10 days of cash conversion cycle goes with ~15pp lower FCF conversion. The case for fixing it is cash, not ROIC.
+> - **Every day of cycle is worth real cash:** at Kraft Heinz, one day of receivables is worth ~$68m and one day of inventory or payables ~$46m. The case for fixing working capital is cash, not ROIC (the release barely moves ROIC).
 > - **Year-end hides the peak:** Hershey ties up ~52 days of cash in Q2 vs ~35 at year-end, so annual balance sheets understate how much funding the business really needs.
 
 **How much cash is stuck in the cash conversion cycle, and how much could a laggard free up by matching its peers?**
@@ -81,13 +81,14 @@ Year-end balance sheets show the quietest day of the year. Quarterly 10-Q data s
 
 The notebook links the cash cycle to **FCF conversion** (free cash flow ÷ net income) and **ROIC** (NOPAT ÷ average invested capital). Goodwill and intangible impairments are added back, so one-off write-downs (Kraft Heinz, Conagra, Smucker's, General Mills) don't swamp the comparison.
 
-- **Within each company, a longer cycle costs cash:** in years when a company's CCC rises 10 days above its usual level, its FCF conversion is about **15 percentage points lower**. This is the clearest result in the analysis.
+- **Each day of cycle is worth real cash:** for Kraft Heinz, one day of receivables is worth about **$68m** and one day of inventory or payables about **$46m**. That's the practical way to set targets (e.g. "take 5 days out of receivables" ≈ $340m).
+- **A mechanical check, not a finding:** within companies, a 10-day longer cycle goes with ~15pp lower FCF conversion. That's expected, not a discovery: the change in working capital is a line in operating cash flow, so a longer cycle lowers free cash flow by construction. The chart below confirms the data behaves as it should.
 - **Across peers there's no clear link** (Spearman r between −0.1 and 0.2 for FCF conversion, FCF margin and ROIC). Brand strength, margins and capital structure matter far more than working capital for where a company sits in the league table.
 - **For Kraft Heinz,** releasing the ~$684m would lift ROIC only slightly (about 6.9% → 7.0%, because invested capital is ~$60bn, mostly goodwill), but it is a one-off cash inflow worth about **19% of a year's free cash flow**. The case for fixing working capital is cash, not returns.
 
 ![CCC vs FCF conversion, FCF margin and ROIC](images/ccc_vs_returns.png)
 
-![Within-company: change in CCC vs FCF conversion](images/ccc_vs_fcf_within.png)
+![Mechanical check: change in CCC vs FCF conversion](images/ccc_vs_fcf_within.png)
 
 ## How it works
 
