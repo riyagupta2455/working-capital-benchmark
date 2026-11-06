@@ -1,5 +1,11 @@
 # Working Capital Benchmarking: Any Industry, Straight from SEC Filings
 
+> [!IMPORTANT]
+> **Key insights**
+> - **$684m cash opportunity at Kraft Heinz:** matching peer-median working capital frees ~$684m (mostly by collecting from customers faster), worth ~19% of a year's free cash flow.
+> - **A longer cycle costs cash:** within companies, every +10 days of cash conversion cycle goes with ~15pp lower FCF conversion. The case for fixing it is cash, not ROIC.
+> - **Year-end hides the peak:** Hershey ties up ~52 days of cash in Q2 vs ~35 at year-end, so annual balance sheets understate how much funding the business really needs.
+
 **How much cash is stuck in the cash conversion cycle, and how much could a laggard free up by matching its peers?**
 
 A Python / Google Colab tool that pulls 10 years of audited 10-K data straight from SEC EDGAR, benchmarks working-capital efficiency across a peer group in **any industry**, and sizes the cash-release opportunity for an underperformer. The worked case study below is US packaged food & beverage.
