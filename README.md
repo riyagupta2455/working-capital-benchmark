@@ -58,6 +58,19 @@ Leave `TARGET` blank and the notebook automatically sizes the opportunity for th
 
 ![CCC build-up](images/ccc_buildup.png)
 
+## Seasonality: the quarterly view
+
+Year-end balance sheets show the quietest day of the year. Quarterly 10-Q data shows the peak, which is what treasury actually has to fund.
+
+- **Hershey** ties up the most cash in Q2 (CCC ~52 days vs ~35 in Q4), consistent with building inventory ahead of Halloween.
+- **Keurig Dr Pepper** has the biggest seasonal swing (~18 days) but stays deeply negative all year (around −80 to −100 days), thanks to long supplier terms.
+- **Kraft Heinz** is the least seasonal (CCC 8–11 days every quarter). Its trade working capital still moves by about **$400m** within a typical year, peaking in Q1.
+- Coca-Cola and PepsiCo are left out of the quarterly view: their 10-Qs report payables together with accrued liabilities, which would make the swing look far bigger than it is.
+
+![Seasonality by fiscal quarter](images/seasonality.png)
+
+![Kraft Heinz quarterly working-capital days](images/target_quarterly.png)
+
 ## How it works
 
 1. **Data:** SEC EDGAR XBRL `companyfacts` API (free, primary-source 10-K data). Tickers are mapped to CIKs automatically.
@@ -72,7 +85,8 @@ Leave `TARGET` blank and the notebook automatically sizes the opportunity for th
 6. **Metrics:** DSO / DIO / DPO / CCC on average balances, which smooths out year-end window dressing.
 7. **Benchmarking:** peer median and top quartile, a heatmap over time, and target vs peer interquartile range.
 8. **Opportunity sizing and sensitivity:** day gaps converted to dollars, lever by lever, plus cash freed per day of improvement.
-9. **Export:** everything goes to `working_capital_benchmark.xlsx`.
+9. **Seasonality:** Q1–Q3 from 10-Qs, Q4 balances from the 10-K and Q4 flows as full year minus Q1–Q3, labelled by fiscal quarter.
+10. **Export:** everything goes to `working_capital_benchmark.xlsx`.
 
 ## Limitations
 
@@ -81,6 +95,7 @@ Leave `TARGET` blank and the notebook automatically sizes the opportunity for th
 - **Receivables factoring or securitisation** lowers DSO without any change in customer behaviour.
 - **Industries differ structurally:** only compare within a peer group. For software, DPO is measured against a small cost base and is noisy, so focus on DSO there.
 - **M&A distorts averages:** deals like KDP's merger and KHC's divestitures cause step changes.
+- **Quarterly data is rougher:** Q4 flows are derived and quarter-end (not average) balances are used.
 - **Benchmarking isn't target-setting:** channel mix and geography can justify a different cycle.
 - **US filers only:** companies that don't file 10-Ks with the SEC (e.g. most Indian or European listings) aren't covered.
 
